@@ -41,8 +41,8 @@ def device_flow_session(client_id, auto=False):
 
     # display user instructions
     if auto:
-        pyperclip.copy(device_code['user_code'])
-        webbrowser.open(device_code['verification_url'])
+        pyperclip.copy(device_code['user_code']) # copy user code to clipboard
+        webbrowser.open(device_code['verification_url']) # open browser
         print(f'The code {device_code["user_code"]} has been copied to your clipboard, '
               f'and your web browser is opening {device_code["verification_url"]}. '
               'Paste the code to sign in.')
