@@ -15,19 +15,14 @@ Authentication is handled via [device flow authentication](#device-flow-authenti
 
 ## Installation
 
-This section covers how to install and configure the sample application.
-
-## Prerequisites
-
-Before installing the sample:
+Verify that you have the following prerequisites in place before installing the sample:
 
 * Install Python from [https://www.python.org/](https://www.python.org/). We've tested the code with Python 3.6.2, but any Python 3.x version should work. If your code base is running under Python 2.7, you may find it helpful to use the [3to2](https://pypi.python.org/pypi/3to2) tools to port the code to Python 2.7.
+* The sample can be run on any operating system that supports Python 3.x, including recent versions of Windows, Linux, and Mac OS. In some cases, you may need to use a different command to launch Python &mdash; for example, some Linux distros reserve the command ```python``` for Python 2.7, so you need to use ```python3``` to launch an installed Python 3.x version.
 * This sample requires an [Office 365 for business account](https://msdn.microsoft.com/en-us/office/office365/howto/setup-development-environment#bk_Office365Account).
 * To register your application in the Azure Portal, you will need an Azure account associated with your Office 365 account. No charges will be incurred for registering your application in the Azure Portal, but you must have an account. If you don't have one, you can sign up for an [Azure Free Account](https://azure.microsoft.com/en-us/free/free-account-faq/).
 
-## Installing the sample code
-
-Follow these steps to install the sample code:
+Follow these steps to install the sample code on your computer:
 
 1. Clone the repo with this command:
     * ```git clone https://github.com/microsoftgraph/python-sample-console-app.git```
@@ -80,13 +75,13 @@ Microsoft Graph uses Azure Active Directory (Azure AD) for authentication, and A
 
 ![device flow](images/deviceflow.png)
 
-The device flow implementation in the sample app can be found in the ```device_flow_auth()``` function of [helpers.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py). They key concept for device flow is that our app gets a _user code_ and shows it to the user, and that code must be entered on the _authorization URL_ page before it expires. When we call ADAL's ```acquire_token_with_device_code()``` method, it begins polling to check whether the code has been entered, and if the code is entered and the user consents to the requested permissions, an access token is returned.
+The ```device_flow_auth()``` function of [helpers.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py) handles the authentication details. First, [the app calls ADAL's acquire_user_code() method](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L39-L40) to get a _user code_. This code is [displayed on the console](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L42-L50), and that code must be entered on the _authorization URL_ page before it expires. While waiting for this to happen, the app [calls ADAL's acquire_token_with_device_code() method](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L52-L54), which begins polling to check whether the code has been entered. When the code is entered and the user consents to the requested permissions, an access token is returned. The app then [creates a Requests session and stores the access token in the session's Authorization header](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L58-L61), where it will be sent with calls to Microsoft Graph via the session's HTTP verb methods such as ```get()``` or ```put()```.
 
 This sample doesn't use a **refresh token**, but it's easy to obtain a refresh token if you'd like to provide your users with a "remember me" experience that doesn't require logging in every time they run your app. To get a refresh token, register the application with ```offline_access``` permission, and then you'll receive a refresh token which you can use with ADAL's [acquire_token_with_refresh_token](https://github.com/AzureAD/azure-activedirectory-library-for-python/blob/dev/sample/refresh_token_sample.py#L47-L69) method to refresh a Graph access token.
 
 ## Helper functions
 
-Several helper functions in [helpers.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py) provide simple wrappers for common Graph operations, and provide examples of how to make authenticated Graph requests. These functions can be used with any auth library &mdash; the only requirement is that there is a valid Graph access token stored in the default HTTP headers of the session. The  ```device_flow_session()``` function handles as explained below.
+Several helper functions in [helpers.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py) provide simple wrappers for common Graph operations, and provide examples of how to make authenticated Graph requests via the methods of the session object. These helper functions can be used with any auth library &mdash; the only requirement is that the session object has a valid Graph access token stored in its ```Authorization``` header.
 
 ### api_endpoint(url)
 
