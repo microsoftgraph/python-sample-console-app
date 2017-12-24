@@ -40,12 +40,12 @@ To run the sample, you will need to register an application and add the register
 2. Enter a unique name for your application, choose **Native** for the Application type, and enter any valid URL for **Redirect URI**. (The Redirect URI is not used in this sample, but you must enter a valid URL during app registration.) Then choose **Create**.
 ![create application](images/registration1.png)
 
-3. After the application is created, you'll be returned to the **App registrations** list. Choose your app from the list to open the settings page. (If the list of apps is long, you can type the beginning of the app name into the search box, and the list will show only apps that start with the specified string.) Once you have the app settings page open, copy the **Application ID** and save it. You'll need this later to complete the setup process.
+3. After the application is created, you'll be returned to the **App registrations** list. Choose your app from the list to open the settings page. Once you have the app settings page open, copy the **Application ID** and save it. You'll need this later to complete the setup process.
 ![copy Application ID](images/registration2.png)
 
 4. The final step in app registration is to add the permissions that the sample app requires. From the app settings page, choose **Required permissions**, then **Add**, then **Select an API**. Then choose **Microsoft Graph** and **Select**. Here you'll see a list of _Delegated Permissions_. Check the box next to these permissions:
-**Have full access to user files** (this is the _Files.ReadWrite_ permission needed to upload files to your OneDrive account)
-**Send email as a user** (this is the _Mail.Send_ permission needed to send email)
+    * **Have full access to user files** (this is the _Files.ReadWrite_ permission needed to upload files to your OneDrive account)
+    * **Send email as a user** (this is the _Mail.Send_ permission needed to send email)
 
 After registering your application, modify the ```config.py``` file in the root folder of your cloned repo, and follow the instructions to enter your Client ID (the Application ID value you copied in Step 3 earlier). Save the change, and you're ready to run the sample.
 
@@ -59,7 +59,7 @@ Follow these steps to run the sample app:
 2. After entering the code at https://aka.ms/devicelogin, you'll be prompted to select an identity or enter an email address to identify yourself. The identity you use must be in the same organization/tenant where the application was registered. Sign in, and then you'll be asked to consent to the application's delegated permissions as shown below. Choose **Accept**.
 ![consenting to permissions](images/running2.png)
 
-3. After consenting to permissions, you'll see a message saying "You have signed in to the console-app-sample application on your device. You may now close this window." Close the browser and return to the console. You are now authenticated, and the app has a token that can be used for Microsoft Graph requests. The app will request your user profile and display your name and email address, then prompt you for a destination email address. You may enter one or more email recipients (delimited with ;), or press **Enter** to send the email to yourself.
+3. After consenting to permissions, you'll see a message saying "You have signed in to the console-app-sample application on your device. You may now close this window." Close the browser and return to the console. You are now authenticated, and the app has a token that can be used for Microsoft Graph requests. The app will request your user profile and display your name and email address, then prompt you for a destination email address. You may enter one or more email recipients (delimited with ```;```), or press **Enter** to send the email to yourself.
 ![entering recipients](images/running3.png)
 
 4. After entering email recipients, you'll see console output showing the Graph endpoints and responses for the remaining steps in the sample app: getting your profile photo, uploading it to OneDrive, creating a sharing link, and sending the email.
@@ -71,7 +71,7 @@ Check your email, and you'll see the email that has been sent. It includes your 
 
 ## Device Flow authentication
 
-Microsoft Graph uses Azure Active Directory (Azure AD) for authentication, and Azure AD supports a variety of [OAuth 2.0](http://www.rfc-editor.org/rfc/rfc6749.txt) authentication flows. The recommended authorization flow for Python console apps is [device flow](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-07), and this sample uses the [Microsoft ADAL for Python](https://github.com/AzureAD/azure-activedirectory-library-for-python) to implement device flow as shown in the diagram below.
+Microsoft Graph uses Azure Active Directory (Azure AD) for authentication, and Azure AD supports a variety of [OAuth 2.0](http://www.rfc-editor.org/rfc/rfc6749.txt) authentication flows. The recommended authorization flow for Python console apps is [device flow](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-07), and this sample uses [Microsoft ADAL for Python](https://github.com/AzureAD/azure-activedirectory-library-for-python) to implement device flow as shown in the diagram below.
 
 ![device flow](images/deviceflow.png)
 
