@@ -1,5 +1,7 @@
 # Python console application for Microsoft Graph
 
+![language:Python](https://img.shields.io/badge/Language-Python-blue.svg?style=flat-square) ![license:MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square) 
+
 This sample uses Microsoft Graph to read your user profile, download your profile photo, upload the photo to OneDrive, create a sharing link, and send an email on your behalf (to yourself by default).
 
 Authentication is handled via [device flow authentication](#device-flow-authentication), the recommended approach for console applications. If you're looking for examples of how to work with Microsoft Graph from Python _web applications_, see [Python authentication samples for Microsoft Graph](https://github.com/microsoftgraph/python-sample-auth). For a web app sample that does the same things as this console app sample, see [Sending mail via Microsoft Graph from Python](https://github.com/microsoftgraph/python-sample-send-mail).
