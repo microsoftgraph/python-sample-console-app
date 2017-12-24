@@ -117,13 +117,17 @@ This project has adopted the [Microsoft Open Source Code of Conduct](https://ope
 
 ## Resources
 
-* [OAuth 2.0 Device Flow for Browserless and Input Constrained Devices](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-07)
-* [Microsoft ADAL for Python](https://github.com/AzureAD/azure-activedirectory-library-for-python)
-* [Sending mail via Microsoft Graph from Python](https://github.com/microsoftgraph/python-sample-send-mail)
-* [Python authentication samples for Microsoft Graph](https://github.com/microsoftgraph/python-sample-auth)
+* Authentication:
+    * [Microsoft ADAL for Python](https://github.com/AzureAD/azure-activedirectory-library-for-python)
+    * [Python authentication samples for Microsoft Graph](https://github.com/microsoftgraph/python-sample-auth)
+    * [OAuth 2.0 Device Flow for Browserless and Input Constrained Devices](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-07)
 * Graph API documentation:
     * [Get a user](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_get)
     * [Get photo](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/profilephoto_get)
     * [Send mail](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_sendmail)
     * [Create a sharing link for a DriveItem](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_createlink)
     * [Upload or replace the contents of a DriveItem](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_put_content)
+* Other Python samples for Microsoft Graph:
+    * [Sending mail via Microsoft Graph from Python](https://github.com/microsoftgraph/python-sample-send-mail) (web app)
+    * [Working with paginated Microsoft Graph responses in Python](https://github.com/microsoftgraph/python-sample-pagination)
+    * [Working with Graph open extensions in Python](https://github.com/microsoftgraph/python-sample-open-extensions)
