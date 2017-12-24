@@ -83,6 +83,10 @@ This sample doesn't use a **refresh token**, but it's easy to obtain a refresh t
 
 Several helper functions in [helpers.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py) provide simple wrappers for common Graph operations, and provide examples of how to make authenticated Graph requests via the methods of the session object. These helper functions can be used with any auth library &mdash; the only requirement is that the session object has a valid Graph access token stored in its ```Authorization``` header.
 
+### A note on HTTP headers
+
+In this sample, the session object sends the required ```Authorization``` header (which contains the access token) as well as optional headers to identify the libraries used. These headers are set [during the authentication process](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L59-L61). In addition, you may want to create other headers for certain Graph calls. You can do this by passing a ```headers``` dictionary to the Graph call, and this dictionary will be merged with the default headers on the session object. You can see an example of this technique in  parameter for any of the ```send_mail``` helper function, which adds a ```Content-Type``` header as shown [here](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py#L138-L138).
+
 ### api_endpoint(url)
 
 Converts a relative path such as ```/me/photo/$value``` to a full URI based on the current RESOURCE and API_VERSION settings in config.py.
