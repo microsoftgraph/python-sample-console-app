@@ -17,6 +17,12 @@ def sendmail_sample(session):
     This sample retrieves the user's profile photo, uploads it to OneDrive,
     creates a view-only sharing link for the photo, and sends an email
     with the photo attached.
+
+    The code in this function includes many print statements to provide
+    information about which endpoints are being called and the status and
+    size of Microsoft Graph responses. This information is helpful for
+    understanding how the sample works with Graph, but would not be included
+    in a typical production application.
     """
 
     print('\nGet user profile ---------> https://graph.microsoft.com/beta/me')
