@@ -27,8 +27,7 @@ def sendmail_sample(session):
 
     print('\nGet user profile ---------> https://graph.microsoft.com/beta/me')
     user_profile = session.get(api_endpoint('me'))
-    print(28*' ' + f'<Response [{user_profile.status_code}]>',
-          f'bytes returned: {len(user_profile.text)}\n')
+    print(28*' ' + f'<Response [{user_profile.status_code}]>', f'bytes returned: {len(user_profile.text)}\n')
     if not user_profile.ok:
         pprint.pprint(user_profile.json()) # display error
         return

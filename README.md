@@ -35,17 +35,29 @@ Follow these steps to install the sample code on your computer:
 
 To run the sample, you will need to register an application and add the registered application's ID to the configuration information in the [config.py](https://github.com/microsoftgraph/python-sample-console-app/blob/master/helpers.py) file. Follow these steps to register and configure your application:
 
-1. Sign in to the [Azure Portal](https://portal.azure.com) and choose **Azure Active Directory** in the sidebar, then choose **App registrations** and **New application registration**.
+1. Navigate to the [Azure portal > App registrations](https://go.microsoft.com/fwlink/?linkid=2083908) to register your app. Sign in using a work or school account, or a personal Microsoft account.
 
-2. Enter a unique name for your application, choose **Native** for the Application type, and enter any valid URL for **Redirect URI**. (The Redirect URI is not used in this sample, but you must enter a valid URL during app registration.) Then choose **Create**.
-![create application](images/registration1.png)
+2. Select **New registration**.
 
-3. After the application is created, you'll be returned to the **App registrations** list. Choose your app from the list to open the settings page. Once you have the app settings page open, copy the **Application ID** and save it. You'll need this later to complete the setup process.
-![copy Application ID](images/registration2.png)
+3. When the **Register an application page** appears, set the values as follows:
+    1. Set **Name** to `PythonConsoleApp`.
+    2. Set **Supported account types** to **Accounts in any organizational directory and personal Microsoft accounts**.
+    3. Leave **Redirect URI** empty.
+    4. Choose **Register**.
 
-4. The final step in app registration is to add the permissions that the sample app requires. From the app settings page, choose **Required permissions**, then **Add**, then **Select an API**. Then choose **Microsoft Graph** and **Select**. Here you'll see a list of _Delegated Permissions_. Check the box next to these permissions:
-    * **Have full access to user files** (this is the _Files.ReadWrite_ permission needed to upload files to your OneDrive account)
-    * **Send email as a user** (this is the _Mail.Send_ permission needed to send email)
+4. On the **PythonConsoleApp** overview page, copy and save the value for the **Application (client) ID**. You'll need it later.
+
+5. Select **API permissions**.
+   1. Choose the **Add a permission** button and then make sure that the **Microsoft APIs** tab is selected.
+   2. In the **Commonly used Microsoft APIs** section, select **Microsoft Graph**, and then select **Delegated permissions**.
+   3. Use the **Select permissions** search box to search for the `Files.ReadWrite` and `Mail.Send` permissions.
+   4. Select the checkbox for each permission as it appears.
+      > **NOTE:** Permissions will not remain visible in the list as you select each one.
+
+6. Go to the **Authentication** page. 
+    1. Check the box next to `https://login.microsoftonline.com/common/oauth2/nativeclient`.
+    2. Find the setting labeled **Default client type** and set it to `Yes`.
+    3. Select **Save** at the top of the page.
 
 After registering your application, modify the ```config.py``` file in the root folder of your cloned repo, and follow the instructions to enter your Client ID (the Application ID value you copied in Step 3 earlier). Save the change, and you're ready to run the sample.
 
