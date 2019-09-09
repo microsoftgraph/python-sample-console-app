@@ -8,7 +8,6 @@ languages:
 extensions:
   contentType: samples
   technologies:
-  - Microsoft Grah
   - Microsoft Graph
   services:
   - Outlook
