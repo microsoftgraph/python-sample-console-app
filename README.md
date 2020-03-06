@@ -1,18 +1,3 @@
----
-page_type: sample
-products:
-- office-outlook
-- ms-graph
-languages:
-- python
-extensions:
-  contentType: samples
-  technologies:
-  - Microsoft Graph
-  services:
-  - Outlook
-  createdDate: 12/23/2017 9:27:24 PM
----
 # Python console application for Microsoft Graph
 
 ![language:Python](https://img.shields.io/badge/Language-Python-blue.svg?style=flat-square) ![license:MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square) 
